@@ -3,16 +3,20 @@ import yaml
 
 metadata = {}
 
-metadata["reference"] = "Experiment from Gurnani abd Silver 2021"
+metadata["comment"] = (
+    "Structured metadata file for the dataset used in the Gurnani and Silver 2021 paper."
+)
+
+metadata["reference"] = "Experiment from Gurnani and Silver 2021"
 
 metadata["paper_title"] = (
     "Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex"
 )
-metadata["authors"] = ["Harsha Gurnani", "R. Angus Silver"]
+metadata["paper_authors"] = ["Harsha Gurnani", "R. Angus Silver"]
 metadata["experimenter"] = "Harsha Gurnani"
 
 metadata["experiment_description"] = (
-    "This dataset was used in the study 'Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex' by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel."
+    "This dataset was generated for the study 'Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex' by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel."
 )
 
 metadata["institution"] = "University College London"

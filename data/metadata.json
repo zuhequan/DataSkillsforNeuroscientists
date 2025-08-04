@@ -1,12 +1,13 @@
 {
-    "reference": "Experiment from Gurnani abd Silver 2021",
+    "comment": "Structured metadata file for the dataset used in the Gurnani and Silver 2021 paper.",
+    "reference": "Experiment from Gurnani and Silver 2021",
     "paper_title": "Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex",
-    "authors": [
+    "paper_authors": [
         "Harsha Gurnani",
         "R. Angus Silver"
     ],
     "experimenter": "Harsha Gurnani",
-    "experiment_description": "This dataset was used in the study 'Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex' by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel.",
+    "experiment_description": "This dataset was generated for the study 'Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex' by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel.",
     "institution": "University College London",
     "lab": "Silver Lab"
 }
