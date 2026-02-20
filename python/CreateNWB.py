@@ -9,9 +9,6 @@ from LoadMatData import load_mat_file
 from WriteMetadata import metadata
 
 
-hdmf_ver = "v%s" % hdmf.__version__
-
-
 def create_nwb_file(original_experiment_id):
     """
     Create an NWB file based on the metadata and data from the Gurnani and Silver 2021 paper.
@@ -33,6 +30,9 @@ def create_nwb_file(original_experiment_id):
     )
     create_date = datetime.now(tz=tzlocal())
 
+    # Get the version of hdmf
+    hdmf_ver = "v%s" % hdmf.__version__
+
     nwb_file_info = (
         "NWB file based on data from %s, created with pynwb v%s (hdmf %s), Python v%s"
         % (
@@ -43,6 +43,7 @@ def create_nwb_file(original_experiment_id):
         )
     )
 
+    # Create the NWBFile object using pynwb
     nwbfile = pynwb.NWBFile(
         session_description=metadata["reference"],
         identifier=original_experiment_id,
@@ -67,27 +68,47 @@ def create_nwb_file(original_experiment_id):
     ) = load_mat_file(mat_file)
 
     recorded_data = {
-        "Wheel speed": speed,
-        "Whisker Motion Index": whisker_motion_index,
-        "State": state,
+        "Wheel speed": (speed, "Locomotion speed on treadmill (Loco)", "???"),
+        "Whisker Motion Index": (
+            whisker_motion_index,
+            "Normalised whisker motion index (WMI)",
+            "dimensionless",
+        ),
+        "State": (
+            state,
+            "Binary state specifying active period (=1) with locomotion or whisking or quiet wakeful state (0)",
+            "dimensionless",
+        ),
     }
 
-    for key, value in recorded_data.items():
+    for key, info in recorded_data.items():
+        value = info[0]
+        description = info[1]
+        unit = info[2]
         print(f"Adding recorded data: {key} with shape {value.shape}")
         ts = pynwb.TimeSeries(
-            name=key, data=value[1], unit="??", timestamps=value[0] / 1000
+            name=key,
+            data=value[1],
+            unit=unit,
+            timestamps=value[0] / 1000,
+            description=description,
         )
         nwbfile.add_acquisition(ts)
 
     for i in range(len(neuron_df_f_data)):
         neuron_id = i + 1
-        print("Adding neuron data %i" % neuron_id)
+        print("Adding ROI data %i" % neuron_id)
+        imaging_info = "2-photon imaging data. Region of interest %i" % neuron_id
         data = neuron_df_f_data[i]
 
         timestamps = [t for t in neuron_times[i] / 1000]  # Convert to seconds
 
         ts = pynwb.TimeSeries(
-            "Neuron %i fluorescence" % neuron_id, data, "seconds", timestamps=timestamps
+            "ROI %i fluorescence" % neuron_id,
+            data,
+            "seconds",
+            timestamps=timestamps,
+            description=imaging_info,
         )
 
         nwbfile.add_acquisition(ts)
