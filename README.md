@@ -16,3 +16,6 @@ There is a simple Jupyter Notebook in this repo showing plots of some example da
 </a>-->
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/OpenNeuroAI/DataSkillsforNeuroscientists/HEAD)
+
+
+Suggestion: Try this on Visual Stidio Code
