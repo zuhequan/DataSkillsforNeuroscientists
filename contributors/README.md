@@ -10,4 +10,4 @@
 8) Sophia Kim
 9) Adrienne Chen 
 10) Maria macadrai
-11) Joy Zhu
+11) 
