@@ -1,0 +1,9 @@
+# This is the requirements file for Python 3.13 or greater, which excludes some packages 
+# that may not yet be compatible with earlier versions of Python. 
+
+numpy
+matplotlib
+mat73 # package for importing MATLAB mat v7.3 files
+pyyaml
+
+pynwb
